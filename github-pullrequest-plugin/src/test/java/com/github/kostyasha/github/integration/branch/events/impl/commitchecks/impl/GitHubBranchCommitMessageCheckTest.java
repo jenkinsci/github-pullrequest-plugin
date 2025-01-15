@@ -69,7 +69,7 @@ public class GitHubBranchCommitMessageCheckTest {
         givenCommitMessages();
         givenAMessagePattern();
         whenComparedCommitsAreChecked();
-        thenCheckHasNoEffect();
+        thenBuildIsNotSkipped();
     }
 
     @Test
@@ -77,7 +77,7 @@ public class GitHubBranchCommitMessageCheckTest {
         givenACommitMessage();
         givenAMessagePattern();
         whenLastCommitIsChecked();
-        thenCheckHasNoEffect();
+        thenBuildIsNotSkipped();
     }
 
     @Test
@@ -119,7 +119,11 @@ public class GitHubBranchCommitMessageCheckTest {
     }
 
     private void thenBuildIsSkipped() {
-        assertThat("build triggered", result.isSkip(), equalTo(true));
+        assertThat("build not triggered", result.isSkip(), equalTo(true));
+    }
+
+    private void thenBuildIsNotSkipped() {
+        assertThat("build triggered", result.isSkip(), equalTo(false));
     }
 
     private void thenCheckHasNoEffect() {

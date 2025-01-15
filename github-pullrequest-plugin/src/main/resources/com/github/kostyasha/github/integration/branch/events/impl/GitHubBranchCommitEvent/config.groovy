@@ -10,13 +10,11 @@ if (instance == null) {
 }
 
 f.block {
-    table(style: 'width:100%; margin-left: 5px;') {
-        f.entry() {
-            f.hetero_list(name: "checks",
-                    items: instance.checks,
-                    descriptors: descriptor.getEventDescriptors(),
-                    hasHeader: true
-            )
-        }
+    f.entry() {
+        f.hetero_list(name: "checks",
+                items: instance.checks,
+                descriptors: descriptor.getEventDescriptors(),
+                hasHeader: true
+        )
     }
 }

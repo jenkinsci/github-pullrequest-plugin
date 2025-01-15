@@ -85,7 +85,7 @@ public class GitHubBranchCommitMessageCheck extends GitHubBranchCommitCheck impl
         List<String> messages = supplier.get();
         if (commitsAreAllowed(messages)) {
             LOG.debug("Commit messages {} for branch [{}] allowed, commit ignored.", messages, name);
-            return null;
+            return toCause(remoteBranch, localRepo, false, "Commit messages %s for branch [%s] allowed by check.", messages, name);
         }
 
         return toCause(remoteBranch, localRepo, true, "Commit messages %s for branch [%s] not allowed by check.", messages, name);
